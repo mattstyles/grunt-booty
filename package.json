@@ -1,6 +1,6 @@
 {
   "name": "grunt-bower-bootstrap",
-  "description": "Adds the bootstrap to your project from a bower install - optionally includes font-awesome",
+  "description": "Adds bootstrap to your project from a bower install - optionally includes font-awesome",
   "version": "0.1.0",
   "homepage": "https://github.com/mattstyles/grunt-bower-bootstrap",
   "author": {
