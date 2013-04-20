@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    grunt.registerMultiTask('bower_bootstrap', 'Builds bootstrap into your project from a bower install', function() {
+    grunt.registerMultiTask('booty', 'Builds bootstrap into your project from a bower install', function() {
 
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
