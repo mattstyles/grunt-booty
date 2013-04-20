@@ -36,32 +36,32 @@ module.exports = function(grunt) {
         var paths = [
             '',
             '/bootstrap',
-            '/font-awesome-more'
+            '/font-awesome-more'                // @todo should be configurable
         ];
 
         var errors = [];
 
-        paths.forEach( function( path) {
+        paths.forEach( function( path ) {
             try {
                 grunt.log.write( 'Finding ' + options.componentPath + path + '...' );
                 fs.readdirSync( options.componentPath + path );
                 grunt.log.writeln( 'found'.cyan );
-            } catch (e) {
+            } catch( e ) {
                 grunt.log.error();
-                grunt.verbose.error(e);
+                grunt.verbose.error( e );
 
                 // If a valid component parent path was not found
-                if (e.path === options.componentPath) {
+                if ( e.path === options.componentPath ) {
                     grunt.fail.warn( 'No component directory -- specify a valid directory\n  ' );
                 }
 
                 // If we got through here then keep track of the errors
-                errors.push(e.path);
+                errors.push( e.path );
             }
         });
 
         // Warn about the errors and fail
-        grunt.log.writeln('');
+        grunt.log.write( grunt.util.linefeed );
         if ( errors.length ) {
             errors.forEach( function( error ) {
                 grunt.log.writeln( error.match('[^/]+$')[0].cap().red + ' not found in component directory'.yellow );
@@ -69,37 +69,65 @@ module.exports = function(grunt) {
             grunt.fail.warn( 'Try bower install\n  ' );
         }
 
-        // Test that this project installs and can be run as a grunt task
-        grunt.log.writeln( 'this is a test of the grunt-booty task' );
+        // Start the actual task
+        // Move stuff over
 
+        // Have a go at bootstrap
+        try {
+            // The meat - bootstrap less files
+            grunt.file.mkdir( options.dest + '/bootstrap' );
+            fs.readdirSync( options.componentPath + '/bootstrap/less').forEach( function( file ) {
+                if ( grunt.util._.endsWith( file, '.less' ) ) {
+                    grunt.file.copy( options.componentPath + '/bootstrap/less/' + file, options.dest + '/bootstrap/' + file );
+                }
+            });
 
+            // glyphicons needed for sprite
+            // @todo this can probably be removed if font-awesome is used
+            grunt.file.mkdir( options.dest + '/img' );
+            fs.readdirSync( options.componentPath + '/bootstrap/img').forEach( function( file ) {
+                if ( grunt.util._.endsWith( file, '.png' ) ) {
+                    grunt.file.copy( options.componentPath + '/bootstrap/img/' + file, options.dest + '/img/' + file );
+                }
+            });
+        // Catch all bootstrap copying errors
+        } catch( e ) {
+            grunt.log.error();
+            grunt.verbose.error( e );
+            grunt.fail.warn( 'Error copying bootstrap\n   ' );
+        }
 
+        // Now have a go at font-awesome
+        try {
+            // The meat - font-awesome less files
+            grunt.file.mkdir( options.dest + '/font-awesome-more' );
+            fs.readdirSync( options.componentPath + '/font-awesome-more/less').forEach( function( file ) {
+                if ( grunt.util._.endsWith( file, '.less' ) ) {
+                    grunt.file.copy( options.componentPath + '/font-awesome-more/less/' + file, options.dest + '/font-awesome-more/' + file );
+                }
+            });
 
-//        // Iterate over all specified file groups.
-//        this.files.forEach(function(f) {
-//          // Concat specified files.
-//          var src = f.src.filter(function(filepath) {
-//            // Warn on and remove invalid source files (if nonull was set).
-//            if (!grunt.file.exists(filepath)) {
-//              grunt.log.warn('Source file "' + filepath + '" not found.');
-//              return false;
-//            } else {
-//              return true;
-//            }
-//          }).map(function(filepath) {
-//            // Read file source.
-//            return grunt.file.read(filepath);
-//          }).join(grunt.util.normalizelf(options.separator));
-//
-//          // Handle options.
-//          src += options.punctuation;
-//
-//          // Write the destination file.
-//          grunt.file.write(f.dest, src);
-//
-//          // Print a success message.
-//          grunt.log.writeln('File "' + f.dest + '" created.');
-//        });
+            // main font-awesome font
+            grunt.file.mkdir( options.dest + '/font' );
+            fs.readdirSync( options.componentPath + '/font-awesome-more/font').forEach( function( file ) {
+                grunt.file.copy( options.componentPath + '/font-awesome-more/font/' + file, options.dest + '/font/' + file );
+            });
+
+            // additional font-awesome stuff
+            grunt.file.mkdir( options.dest + '/fonts' );
+            fs.readdirSync( options.componentPath + '/font-awesome-more/fonts').forEach( function( file ) {
+                grunt.file.recurse( options.componentPath + '/font-awesome-more/fonts/', function( abspath, rootdir, subdir, filename ) {
+                    grunt.file.copy( abspath, options.dest + '/fonts/' + subdir + '/' + filename );
+                });
+            });
+
+            // Catch all font-awesome copying errors
+        } catch( e ) {
+            grunt.log.error();
+            grunt.verbose.error( e );
+            grunt.fail.warn( 'Error copying font-awesome-more\n   ' );
+        }
+
     });
 
 };

@@ -26,7 +26,7 @@ module.exports = function(grunt) {
     // Before generating any new files, remove any previously-created files.
     clean: {
       tests: [
-        'test/fixtures/test1/styles/**/*'
+        'test/fixtures/vanilla/styles/**/*'
       ]
     },
 
