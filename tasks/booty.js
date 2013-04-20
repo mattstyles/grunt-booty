@@ -8,7 +8,7 @@
 
 'use strict';
 
-var fs      = require('fs')
+var fs      = require('fs');
 
 // Helper function
 String.prototype.cap = function() {
