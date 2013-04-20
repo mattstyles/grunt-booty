@@ -1,0 +1,21 @@
+{
+  "name": "font-awesome-more",
+  "version": "0.0.0",
+  "main": "css/font-awesome.css",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "docs"
+  ],
+  "gitHead": "aa00919881388c2f7a8da35c2029851d98aeaf38",
+  "readme": "#Font Awesome 3.0.2\n##the iconic font designed for use with Twitter Bootstrap\n\nThe full suite of pictographic icons, examples, and documentation can be found at:\nhttp://fortawesome.github.com/Font-Awesome/\n\n\n##License\n- The Font Awesome font is licensed under the SIL Open Font License - http://scripts.sil.org/OFL\n- Font Awesome CSS, LESS, and SASS files are licensed under the MIT License - http://opensource.org/licenses/mit-license.html\n- The Font Awesome pictograms are licensed under the CC BY 3.0 License - http://creativecommons.org/licenses/by/3.0/\n- Attribution is no longer required in Font Awesome 3.0, but much appreciated: \"Font Awesome by Dave Gandy - http://fortawesome.github.com/Font-Awesome\"\n\n##Contact\n- Email: dave@davegandy.com\n- Twitter: http://twitter.com/fortaweso_me\n- Work: Lead Product Designer @ http://kyru.us\n\n##Changelog\n- v3.0.0 - all icons redesigned from scratch, optimized for Bootstrap's 14px default\n- v3.0.1 - much improved rendering in webkit, various bugfixes\n- v3.0.2 - much improved rendering and alignment in IE7\n",
+  "readmeFilename": "README.md",
+  "_id": "Font-Awesome-More@3.0.2",
+  "description": "The full suite of pictographic icons, examples, and documentation can be found at: http://fortawesome.github.com/Font-Awesome/",
+  "commit": "aa00919881388c2f7a8da35c2029851d98aeaf38",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hectorcenteno/Font-Awesome-More.git"
+  }
+}
