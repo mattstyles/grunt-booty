@@ -54,15 +54,15 @@ exports.bower_bootstrap = {
 //  }
 
     /*
-     * test1
+     * vanilla test
      *
-     * /styles/ has /less/ and /css/ folders but nothing more.
+     * Start - /styles/ is an empty directory.
      * Expected - task should populate /styles/ with bootstrap less files
      */
-    test1: function( test ) {
+    vanilla: function( test ) {
         test.expect(1);
 
-        var actual = fs.readdirSync( 'test/test1/styles').sort();
+        var actual = fs.readdirSync( 'test/fixtures/test1/styles').sort();
         var expected = fs.readdirSync( 'test/expected/test1/styles').sort();
 
         test.deepEqual( actual, expected, 'should copy over bootstrap less files and font-awesome-more files using the correct file structure' );
