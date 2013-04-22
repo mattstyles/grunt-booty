@@ -42,24 +42,35 @@ exports.booty = {
      * Start - /styles/ is an empty directory.
      * Expected - task should populate /styles/ with bootstrap less files
      */
-
-
     vanilla: function( test ) {
         test.expect(1);
 
-        var actual = []
-          , expected = [];
-
-        grunt.file.recurse( 'test/fixtures/vanilla/styles', function( abspath, rootdir, subdir, filename ) {
-            actual.push( path.join(subdir, filename) );
-        });
-        grunt.file.recurse( 'test/expected/vanilla/styles', function( abspath, rootdir, subdir, filename ) {
-            expected.push( path.join(subdir, filename) );
-        });
+        var actual = testUtils.dir( 'test/fixtures/vanilla/styles' )
+          , expected = testUtils.dir( 'test/expected/vanilla/styles' );
 
         test.deepEqual( actual, expected, 'should copy over bootstrap less files and font-awesome-more files using the correct file structure' );
 
         test.done();
+    }
+
+};
+
+var testUtils = {
+
+    /*
+     * Recursively searches through a directory and returns an array of the contents
+     * @param dirPath - the directory to search through
+     * @param array - optional array to populate - function will return a new one if not specified
+     * @returns - the array, populated with the contents of dirPath
+     */
+    dir: function( dirPath, array ) {
+        array = array || [];
+
+        grunt.file.recurse( dirPath, function( abspath, rootdir, subdir, filename ) {
+            array.push( path.join( subdir, filename ) );
+        });
+
+        return array;
     }
 
 };
