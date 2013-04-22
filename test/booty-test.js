@@ -24,6 +24,27 @@ var grunt = require( 'grunt' )
     test.ifError(value)
 */
 
+// Utility functions
+var testUtils = {
+
+    /*
+     * Recursively searches through a directory and returns an array of the contents
+     * @param dirPath - the directory to search through
+     * @param array - optional array to populate - function will return a new one if not specified
+     * @returns - the array, populated with the contents of dirPath
+     */
+    dir: function( dirPath, array ) {
+        array = array || [];
+
+        grunt.file.recurse( dirPath, function( abspath, rootdir, subdir, filename ) {
+            array.push( path.join( subdir, filename ) );
+        });
+
+        return array;
+    }
+
+};
+
 exports.booty = {
 
     setUp: function( done ) {
@@ -51,27 +72,6 @@ exports.booty = {
         test.deepEqual( actual, expected, 'should copy over bootstrap less files and font-awesome-more files using the correct file structure' );
 
         test.done();
-    }
-
-};
-
-// Utility functions
-var testUtils = {
-
-    /*
-     * Recursively searches through a directory and returns an array of the contents
-     * @param dirPath - the directory to search through
-     * @param array - optional array to populate - function will return a new one if not specified
-     * @returns - the array, populated with the contents of dirPath
-     */
-    dir: function( dirPath, array ) {
-        array = array || [];
-
-        grunt.file.recurse( dirPath, function( abspath, rootdir, subdir, filename ) {
-            array.push( path.join( subdir, filename ) );
-        });
-
-        return array;
     }
 
 };
