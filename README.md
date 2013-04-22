@@ -146,7 +146,9 @@ keep the watch task running and replace line 2 in `app/views/main.html` with thi
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-v0.2.0
+22.04.2013 v0.2.1 Corrections to vanilla test case - Detailed usage example using yeoman angular generator
+
+20.04.2013 v0.2.0 Task ready to roll with test case - Initial deploy to npm
 
 ---
 
