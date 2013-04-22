@@ -71,7 +71,7 @@ bootstrap_ )
 
 * Everything will be installed and ready to go but there is a quick bit of scaffolding before we can set up the tasks
 to run - go ahead and create a `css` and a `less` folder in `styles`, we can also delete the pre-generated `main.css`
-as we’ll using a slightly different structure ( _grunt-booty will very soon take care of this step for you_ )
+as we’ll be using a slightly different structure ( _grunt-booty will very soon take care of this step for you_ )
   ```bash
   mkdir -p app/styles/{css,less}
   rm app/styles/main.css
@@ -146,4 +146,8 @@ keep the watch task running and replace line 2 in `app/views/main.html` with thi
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+v0.2.0
+
+---
+
+Task submitted by [Matt Styles](http://veryfizzyjelly.com) [@veryfizzyjelly](https://twitter.com/veryfizzyjelly)
