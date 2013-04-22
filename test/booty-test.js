@@ -1,7 +1,8 @@
 'use strict';
 
 var grunt = require( 'grunt' )
-  , fs    = require( 'fs' );
+  , fs    = require( 'fs' )
+  , path  = require( 'path' );
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -34,24 +35,6 @@ exports.booty = {
         // tear down here if necessary
         done();
     },
-//  default_options: function(test) {
-//    test.expect(1);
-//
-//    var actual = grunt.file.read('tmp/default_options');
-//    var expected = grunt.file.read('test/expected/default_options');
-//    test.equal(actual, expected, 'should describe what the default behavior is.');
-//
-//    test.done();
-//  },
-//  custom_options: function(test) {
-//    test.expect(1);
-//
-//    var actual = grunt.file.read('tmp/custom_options');
-//    var expected = grunt.file.read('test/expected/custom_options');
-//    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-//
-//    test.done();
-//  }
 
     /*
      * vanilla test
@@ -59,11 +42,20 @@ exports.booty = {
      * Start - /styles/ is an empty directory.
      * Expected - task should populate /styles/ with bootstrap less files
      */
+
+
     vanilla: function( test ) {
         test.expect(1);
 
-        var actual = fs.readdirSync( 'test/fixtures/vanilla/styles').sort();
-        var expected = fs.readdirSync( 'test/expected/vanilla/styles').sort();
+        var actual = []
+          , expected = [];
+
+        grunt.file.recurse( 'test/fixtures/vanilla/styles', function( abspath, rootdir, subdir, filename ) {
+            actual.push( path.join(subdir, filename) );
+        });
+        grunt.file.recurse( 'test/expected/vanilla/styles', function( abspath, rootdir, subdir, filename ) {
+            expected.push( path.join(subdir, filename) );
+        });
 
         test.deepEqual( actual, expected, 'should copy over bootstrap less files and font-awesome-more files using the correct file structure' );
 
