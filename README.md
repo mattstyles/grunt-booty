@@ -1,13 +1,13 @@
 # grunt-booty
 
-> Adds the bootstrap to your project from a bower install - (optionally includes font-awesome)
+> Adds Bootstrap to your project from a Bower install - (also includes Font-awesome)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
-```shell
+```bash
 npm install grunt-booty --save-dev
 ```
 
@@ -152,4 +152,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ---
 
-Task submitted by [Matt Styles](http://veryfizzyjelly.com) [@veryfizzyjelly](https://twitter.com/veryfizzyjelly)
+Task submitted by [Matt Styles](http://veryfizzyjelly.com/coding/introducing-grunt-booty) [@veryfizzyjelly](https://twitter.com/veryfizzyjelly)
